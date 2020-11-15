@@ -14,41 +14,50 @@
         <!-- Content Row -->
         <div class="row">
             <div class="col-lg-4 mb-4">
-                <form name="sentMessage" id="contactForm" novalidate>
+                <form action=""  method="POST" name="sentMessage" id="">
+                    {% csrf_token %}
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>First Name*</label>
-                            <input type="text" class="form-control" id="first_name" required data-validation-required-message="Please enter your first name.">
+                            <input type="text" class="form-control" id="first_name" value="{{firstname}}"  name="fname" required data-validation-required-message="Please enter your first name.">
                             <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="controls">
                         <label>Last Name*</label>
-                        <input type="text" class="form-control" id="last_name" required data-validation-required-message="Please enter your last name.">
+                        <input type="text" class="form-control" id="last_name" value="{{lastname}}" name="lname"  required data-validation-required-message="Please enter your last name.">
                         <p class="help-block"></p>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Email*</label>
-                            <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email.">
+                            <input type="email" class="form-control" id="email" value="{{email}}" name="email"  required data-validation-required-message="Please enter your email.">
                             <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Password*</label>
-                            <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password.">
+                            <input type="password" class="form-control" id="password" name="password"  required data-validation-required-message="Please enter your password.">
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label>Confirm Password*</label>
-                            <input type="password" class="form-control" id="confirm-password" required data-validation-required-message="Please confirm your password.">
+                            <input type="password" class="form-control" id="confirm-password" name="confirmpassword" required data-validation-required-message="Please confirm your password.">
                         </div>
                     </div>
-                    <div id="success"></div>
+
+                    <div id="success">
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                    {{error}}
+                    </div>
+                    {% endif %}
+                    </div>
+
                     <!-- For success/fail messages -->
-                    <button type="submit" class="btn btn-primary" id="login-btn">Register</button>
+                <input type="submit" value="Register"  class="btn btn-primary mt-1">
                 </form>
             </div>
         </div>

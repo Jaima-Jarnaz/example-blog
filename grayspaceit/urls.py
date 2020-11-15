@@ -21,6 +21,7 @@ from posts.views import posts
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('rest/', include('restframeauth.urls')),
     path('auth/', include('authentication.urls')),
     path('posts/', include('posts.urls')),
     path('', posts),
